@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  $bg-image: linear-gradient(
+    45deg,
+    rgb(211, 225, 19),
+    rgb(225, 19, 218),
+    rgb(19, 225, 170),
+    rgb(19, 60, 225),
+    rgb(19, 60, 225),
+    rgb(88, 19, 225)
+  );
+  @keyframes bg-animation {
+    0% {
+      background-position: left;
+    }
+    100% {
+      background-position: right;
+    }
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-image: $bg-image;
+    animation: bg-animation 20s infinite alternate;
+  }
+}
+@layer components {
+  .img {
+    @apply block w-[100vw] h-[50vh]  object-fill;
+  }
+  .image-container {
+    @apply bg-transparent h-[50vh] w-[100vw];
+  }
+}
+
+@layer utilities {
+  #image-container1 {
+    background-clip: content-box;
+  }
+}
