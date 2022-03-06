@@ -4,18 +4,54 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./index.scss" />
-    <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="./main.ts" defer></script>
     <title>Aron Vaupel</title>
   </head>
 
   <body class="overflow-hidden h-[100vh] w-[100vw] bg-4x">
-    <div class="h-[100vh] w-[100vw]">
-      <div id="image-container1" class="image-container">
+    <div class="h-[100vh] w-[100vw] relative">
+      <header>
+        <img src="./assets/header.svg" alt="" id="header" />
+      </header>
+      <div id="aron" class="image-container">
         <img class="img" src="./assets/ARON.svg" alt="Aron" />
       </div>
-      <div id="image-container2" class="image-container">
+      <div id="vaupel" class="image-container">
         <img class="img" src="./assets/VAUPEL.svg" alt="Vaupel" />
+      </div>
+
+      <div class="flip-card-wrapper">
+        <div class="flip-card" id="flip-card">
+          <div class="flip-card-inner" id="flip-card-inner">
+            <div class="flip-card-front" id="flip-card-front">
+              <p id="flip-card-text">
+                #aron:hire { <br />
+                &nbsp&nbsp&nbsp position: junior;<br />
+                &nbsp&nbsp&nbsp motivation: 100% solid #<span class="green"
+                  >green</span
+                >;<br />
+                &nbsp;&nbsp;&nbsp; workflow-behavior: smooth;<br />
+                &nbsp;&nbsp;&nbsp; border: none;<br />
+                &nbsp;&nbsp;&nbsp; flex:100%; <br />
+                &nbsp;&nbsp;&nbsp; style: cool; <br />
+                &nbsp;&nbsp;&nbsp; team-align: true; <br />
+                &nbsp;&nbsp;&nbsp; salary: calc(commitment*performance);
+                <br />
+                &nbsp;&nbsp;&nbsp; background: sales; <br />
+                &nbsp;&nbsp;&nbsp; future: now !important <br />
+                }
+              </p>
+            </div>
+            <div class="flip-card-back" id="flip-card-back">
+              <img
+                id="profile-picture"
+                src="./assets/foto_portfolio.webp"
+                alt="a photo of me"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

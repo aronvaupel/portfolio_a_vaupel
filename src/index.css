@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-image: linear-gradient(
+    45deg,
+    rgb(211, 225, 19),
+    rgb(225, 19, 218),
+    rgb(19, 60, 225),
+    rgb(19, 225, 170),
+    rgb(88, 19, 225)
+  );
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+body {
+  background-image: var(--bg-image);
+  animation: bg-animation 20s infinite alternate;
+}
+
+#header {
+  @apply absolute top-[-10vh]  h-[10vh] w-full transition-all ease-linear duration-300 flex justify-center;
+}
+
+.flip-card-wrapper {
+  @apply absolute top-0 left-0 w-full h-full flex items-center justify-start;
+}
+
+#flip-card {
+  @apply w-0 h-0 transition-all ease-linear duration-300;
+}
+#profile-picture {
+  @apply rounded-full transition-all ease-linear duration-300;
+}
+
+.img {
+  @apply block w-full h-full object-fill;
+}
+
+.image-container {
+  @apply bg-transparent h-1/2 w-full transition-all ease-linear duration-300;
+}
+
+.flip-card-inner {
+  @apply relative w-0 h-0 transition-all ease-linear duration-300;
+  transform-style: preserve-3d;
+}
+
+#flip-card-text {
+  @apply text-white font-sans text-[0] transition-all ease-linear duration-300;
+}
+
+.green {
+  @apply text-green-400;
+}
+
+.flip-card-front,
+.flip-card-back {
+  @apply absolute w-0 h-0 rounded-full flex items-center justify-center bg-black transition-all ease-linear duration-500;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
