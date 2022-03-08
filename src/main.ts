@@ -10,52 +10,24 @@ const profilePicture = document.getElementById(
 const flipCardText = document.getElementById("flip-card-text") as HTMLElement;
 const header = document.getElementById("header") as HTMLElement;
 
-let state: number = 0;
+let state: number = 1;
 
 function scroll(event: WheelEvent): void {
-  const moveUp = `translateY(-${state < 10 ? state * 5 : 50}vh)`;
-  const moveDown = `translateY(${state < 10 ? state * 5 : 50}vh)`;
-  const slide = `translateX(calc(${state <= 10 ? state * 5 : 50}vw - 12.5vw))`;
-  const roll = `rotateZ(${state <= 10 ? state * 36 : 0}deg)`;
-  const grow = `${state <= 5 ? state * 10 : 50}vh`;
-  const growText = `${state < 10 ? state * 0.1 : 1}rem`;
-  const headerAppear = `translateY(${state < 10 ? 0 : 11}vh)`;
-  const opacityIncrease = `${state < 10 ? state / 10 : 1}`;
-  const opacityDecrease = `${state < 10 ? 1 - state / 10 : 0}`;
-
   if (state > 0 && event.deltaY < 0) {
     state -= 1;
-    flipCard.removeEventListener(
-      "mouseenter",
-      () => (flipCardInner.style.transform = "rotateY(180deg)")
-    );
-    flipCard.removeEventListener(
-      "mouseleave",
-      () => (flipCardInner.style.transform = "rotateY(360deg)")
-    );
-    console.log("goodbye");
-  } else if (state < 10 && event.deltaY > 0) {
+  } else if (state < 20 && event.deltaY > 0) {
     state += 1;
-    flipCard.removeEventListener(
-      "mouseenter",
-      () => (flipCardInner.style.transform = "rotateY(180deg)")
-    );
-    flipCard.removeEventListener(
-      "mouseleave",
-      () => (flipCardInner.style.transform = "rotateY(360deg)")
-    );
-    console.log("goodbye");
-  } else {
-    flipCard.addEventListener(
-      "mouseenter",
-      () => (flipCardInner.style.transform = "rotateY(180deg)")
-    );
-    flipCard.addEventListener(
-      "mouseleave",
-      () => (flipCardInner.style.transform = "rotateY(360deg)")
-    );
-    console.log("hello");
   }
+
+  const moveUp = `translateY(-${state <= 10 ? state * 5 : 50}vh)`;
+  const moveDown = `translateY(${state <= 10 ? state * 5 : 50}vh)`;
+  const slide = `translateX(calc(${state <= 5 ? state * 10 : 50}vw - 12.5vw))`;
+  const roll = `rotateZ(${state <= 5 ? state * 72 : 360}deg)`;
+  const grow = `${state <= 5 ? state * 10 : 50}vh`;
+  const growText = `${state <= 5 ? state * 0.2 : 1}rem`;
+  const headerAppear = `translateY(${state <= 14 ? 0 : 11}vh)`;
+  const opacityIncrease = `${state <= 10 ? state / 10 : 1}`;
+  const opacityDecrease = `${state <= 10 ? 1 - state / 10 : 0}`;
 
   aron.style.transform = moveUp;
   aron.style.opacity = opacityDecrease;
@@ -80,4 +52,34 @@ function scroll(event: WheelEvent): void {
   console.log(state);
 }
 
+function flipPic(): void {
+  if (state >= 14) {
+    flipCardInner.style.transform = "rotateY(180deg)";
+  }
+}
+
+function flipOnHover(): void {
+  if (state >= 14 && state < 20) {
+    flipCard.addEventListener(
+      "mouseenter",
+      () => (flipCardInner.style.transform = "rotateY(360deg)")
+    );
+    flipCard.addEventListener(
+      "mouseleave",
+      () => (flipCardInner.style.transform = "rotateY(180deg)")
+    );
+  } else {
+    flipCard.removeEventListener(
+      "mouseenter",
+      () => (flipCardInner.style.transform = "rotateY(180deg)")
+    );
+    flipCard.removeEventListener(
+      "mouseleave",
+      () => (flipCardInner.style.transform = "rotateY(360deg)")
+    );
+  }
+}
+
 window.addEventListener("wheel", scroll);
+window.addEventListener("wheel", flipPic);
+window.addEventListener("wheel", flipOnHover);

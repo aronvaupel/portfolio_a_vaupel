@@ -26,8 +26,16 @@ body {
   animation: bg-animation 20s infinite alternate;
 }
 
+.image-container {
+  @apply bg-transparent h-1/2 w-full transition-all ease-linear duration-500;
+}
+
+.img {
+  @apply block w-full h-full object-fill transition-all ease-linear duration-500;
+}
+
 #header {
-  @apply absolute top-[-10vh]  h-[10vh] w-full transition-all ease-linear duration-300 flex justify-center;
+  @apply absolute top-[-10vh]  h-[10vh] w-full transition-all ease-linear duration-500 flex justify-center;
 }
 
 .flip-card-wrapper {
@@ -35,31 +43,12 @@ body {
 }
 
 #flip-card {
-  @apply w-0 h-0 transition-all ease-linear duration-300;
-}
-#profile-picture {
-  @apply rounded-full transition-all ease-linear duration-300;
-}
-
-.img {
-  @apply block w-full h-full object-fill;
-}
-
-.image-container {
-  @apply bg-transparent h-1/2 w-full transition-all ease-linear duration-300;
+  @apply w-0 h-0 transition-all ease-linear duration-500;
 }
 
 .flip-card-inner {
-  @apply relative w-0 h-0 transition-all ease-linear duration-300;
+  @apply relative w-0 h-0 transition-all ease-linear duration-500;
   transform-style: preserve-3d;
-}
-
-#flip-card-text {
-  @apply text-white font-sans text-[0] transition-all ease-linear duration-300;
-}
-
-.green {
-  @apply text-green-400;
 }
 
 .flip-card-front,
@@ -70,4 +59,15 @@ body {
 
 .flip-card-back {
   transform: rotateY(180deg);
+}
+#profile-picture {
+  @apply w-0 h-0 rounded-full transition-all ease-linear duration-500;
+}
+
+#flip-card-text {
+  @apply text-white font-sans text-[0] transition-all ease-linear duration-500;
+}
+
+.green {
+  @apply text-green-400;
 }
